@@ -1,24 +1,28 @@
-import { Controller } from "@hotwired/stimulus"
+import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  static targets = ['content']
+  static targets = ["desktop", "mobile"];
 
-  connect() {
-  }
+  connect() {}
 
   toggle() {
-    if (this.contentTarget.classList.contains('hidden')) {
-      this.open()
+    if (
+      this.desktopTarget.classList.contains("hidden") ||
+      this.mobileTarget.classList.contains("hidden")
+    ) {
+      this.open();
     } else {
-      this.close()
+      this.close();
     }
   }
 
   open() {
-    this.contentTarget.classList.remove('hidden')
+    this.desktopTarget.classList.remove("hidden");
+    this.mobileTarget.classList.remove("hidden");
   }
 
   close() {
-    this.contentTarget.classList.add('hidden')
+    this.desktopTarget.classList.add("hidden");
+    this.mobileTarget.classList.add("hidden");
   }
 }
